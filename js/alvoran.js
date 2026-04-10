@@ -16,11 +16,11 @@ const SUMARIO = [
 // ---------- MODO CLARO/ESCURO ----------
 function criarBotaoModo() {
     if (document.querySelector('.btn-modo')) return;
-
+    
     const botaoModo = document.createElement('button');
     botaoModo.textContent = '🌙 Modo Noturno';
     botaoModo.className = 'btn-modo';  // ← usa a classe do CSS
-
+    
     botaoModo.addEventListener('click', alternarModo);
     document.body.appendChild(botaoModo);
 }
@@ -28,9 +28,9 @@ function criarBotaoModo() {
 function alternarModo() {
     const body = document.body;
     const botao = document.querySelector('.btn-modo');
-
+    
     body.classList.toggle('modo-claro');
-
+    
     if (body.classList.contains('modo-claro')) {
         botao.textContent = '☀️ Modo Claro';
         botao.style.color = '#9b2c2c';
@@ -60,7 +60,7 @@ function carregarModoSalvo() {
 // ---------- BARRA DE PROGRESSO (Bônus C) ----------
 function criarBarraProgresso() {
     if (document.querySelector('.barra-progresso')) return;
-
+    
     const barra = document.createElement('div');
     barra.className = 'barra-progresso';
     barra.style.cssText = `
@@ -80,7 +80,7 @@ function criarBarraProgresso() {
 function atualizarBarraProgresso() {
     const barra = document.querySelector('.barra-progresso');
     if (!barra) return;
-
+    
     const scrollTop = window.scrollY;
     const alturaTotal = document.body.scrollHeight - window.innerHeight;
     const progresso = alturaTotal > 0 ? (scrollTop / alturaTotal) * 100 : 0;
@@ -91,7 +91,7 @@ function atualizarBarraProgresso() {
 async function verificarProximoCapitulo(capituloAtual) {
     const proximoNumero = capituloAtual + 1;
     const proximoArquivo = `capitulo-${proximoNumero}.html`;
-
+    
     try {
         const response = await fetch(proximoArquivo, { method: 'HEAD' });
         return response.ok;
@@ -104,7 +104,7 @@ function mostrarMensagemAviso(capitulo) {
     // Remove mensagem existente se houver
     const msgExistente = document.querySelector('.aviso-capitulo');
     if (msgExistente) msgExistente.remove();
-
+    
     // Cria a mensagem
     const aviso = document.createElement('div');
     aviso.className = 'aviso-capitulo';
@@ -113,9 +113,9 @@ function mostrarMensagemAviso(capitulo) {
         <p>O reinado de Dourávia ainda está sendo escrito. Volte em breve para continuar esta jornada.</p>
         <button onclick="this.parentElement.remove()">Fechar</button>
     `;
-
+    
     document.body.appendChild(aviso);
-
+    
     // Remove automaticamente após 5 segundos
     setTimeout(() => {
         if (aviso && aviso.remove) aviso.remove();
@@ -124,11 +124,11 @@ function mostrarMensagemAviso(capitulo) {
 
 function criarBotaoSumario() {
     if (document.querySelector('.btn-sumario')) return;
-
+    
     const btnSumario = document.createElement('button');
     btnSumario.textContent = '📚 SUMÁRIO';
     btnSumario.className = 'btn-sumario';  // ← usa a classe do CSS
-
+    
     btnSumario.addEventListener('click', mostrarSumario);
     document.body.appendChild(btnSumario);
 }
@@ -137,7 +137,7 @@ function mostrarSumario() {
     // Remove modal existente
     const modalExistente = document.querySelector('.modal-sumario');
     if (modalExistente) modalExistente.remove();
-
+    
     // Cria o modal
     const modal = document.createElement('div');
     modal.className = 'modal-sumario';
@@ -157,7 +157,7 @@ function mostrarSumario() {
         z-index: 2000;
         box-shadow: 0 0 50px rgba(0,0,0,0.8);
     `;
-
+    
     // Fundo escuro
     const overlay = document.createElement('div');
     overlay.style.cssText = `
@@ -170,14 +170,14 @@ function mostrarSumario() {
         z-index: 1999;
     `;
     overlay.onclick = () => { modal.remove(); overlay.remove(); };
-
+    
     // Conteúdo do sumário
     let conteudo = '<h2 style="color: #c4a747; margin-bottom: 1.5rem;">📖 Sumário de Alvoran</h2><ul style="list-style: none; padding: 0;">';
-
+    
     SUMARIO.forEach(cap => {
         const isLido = localStorage.getItem(`lido_cap_${cap.numero}`) === 'true';
         const iconeLido = isLido ? '✓ ' : '○ ';
-
+        
         conteudo += `
             <li style="margin-bottom: 0.8rem;">
                 <a href="${cap.arquivo}" style="color: #e0dcd3; text-decoration: none; display: block; padding: 0.3rem 0; border-bottom: 1px solid #2a2a2a;">
@@ -186,21 +186,21 @@ function mostrarSumario() {
             </li>
         `;
     });
-
+    
     // Capítulo atual destacado
     const match = window.location.pathname.match(/capitulo-(\d+)\.html/);
     if (match) {
         const atual = parseInt(match[1]);
         conteudo += `<p style="margin-top: 1rem; font-size: 0.8rem; color: #c4a747;">📍 Você está no Capítulo ${atual}</p>`;
     }
-
+    
     conteudo += `<button id="fecharSumario" style="margin-top: 1.5rem; background: #c4a747; color: #0d0d0d; border: none; padding: 0.5rem 1rem; cursor: pointer; border-radius: 4px;">Fechar</button>`;
-
+    
     modal.innerHTML = conteudo;
-
+    
     document.body.appendChild(overlay);
     document.body.appendChild(modal);
-
+    
     document.getElementById('fecharSumario').onclick = () => {
         modal.remove();
         overlay.remove();
@@ -210,49 +210,20 @@ function mostrarSumario() {
 function atualizarNavegacao() {
     const match = window.location.pathname.match(/capitulo-(\d+)\.html/);
     if (!match) return;
-
+    
     const capituloAtual = parseInt(match[1]);
     const navDiv = document.querySelector('.navegacao');
     if (!navDiv) return;
-
-    // ========== ADICIONAR MENSAGEM DE FIM DE CAPÍTULO ==========
-    // Verifica se já existe uma mensagem de fim
-    if (!document.querySelector('.fim-capitulo')) {
-        const containerLivro = document.querySelector('.container-livro');
-        const fimCap = document.createElement('div');
-        fimCap.className = 'fim-capitulo';
-
-        // Escolhe uma mensagem aleatória (ou fixa)
-        const mensagens = [
-            '⚔️ Fim do capítulo. As cinzas de Dourávia ainda não se assentaram...',
-            '📖 O destino aguarda. Vire a página quando estiver pronto.',
-            '🌹 As rosas negras desabrocham no silêncio entre os capítulos.',
-            '🏰 O conselho se reúne. O que virá a seguir?',
-            '❄️ O inverno se aproxima de Dourávia. Continue lendo para descobrir.',
-            '⚔️ Uma pausa antes da tempestade...',
-            '📜 A trama se aprofunda. O próximo capítulo revelará mais segredos.'
-        ];
-
-        const mensagemAleatoria = mensagens[Math.floor(Math.random() * mensagens.length)];
-
-        fimCap.innerHTML = `
-            <div class="mensagem-fim">${mensagemAleatoria}</div>
-            <div class="simbolo-fim">✧ ✧ ✧</div>
-        `;
-
-        // Insere antes da navegação
-        containerLivro.insertBefore(fimCap, navDiv);
-    }
-
+    
     navDiv.innerHTML = '';
-
+    
     // Botão VOLTAR PARA CAPA
     const btnCapa = document.createElement('a');
     btnCapa.href = 'index.html';
     btnCapa.className = 'btn-capitulo';
     btnCapa.innerHTML = '🏠 CAPA';
     navDiv.appendChild(btnCapa);
-
+    
     // Botão ANTERIOR
     if (capituloAtual > 1) {
         const btnAnterior = document.createElement('a');
@@ -266,7 +237,7 @@ function atualizarNavegacao() {
         espaco.style.width = '80px';
         navDiv.appendChild(espaco);
     }
-
+    
     // Botão SUMÁRIO (versão rápida)
     const btnSumarioRapido = document.createElement('button');
     btnSumarioRapido.textContent = '📚 SUMÁRIO';
@@ -274,13 +245,13 @@ function atualizarNavegacao() {
     btnSumarioRapido.style.cursor = 'pointer';
     btnSumarioRapido.onclick = mostrarSumario;
     navDiv.appendChild(btnSumarioRapido);
-
+    
     // Botão PRÓXIMO
     const proximoNumero = capituloAtual + 1;
     const btnProximo = document.createElement('a');
     btnProximo.className = 'btn-capitulo';
     btnProximo.innerHTML = 'PRÓXIMO →';
-
+    
     fetch(`capitulo-${proximoNumero}.html`, { method: 'HEAD' })
         .then(response => {
             if (response.ok) {
@@ -304,7 +275,7 @@ function atualizarNavegacao() {
                 mostrarMensagemAviso(proximoNumero);
             });
         });
-
+    
     navDiv.appendChild(btnProximo);
 }
 
@@ -313,7 +284,7 @@ function salvarProgresso() {
     const urlAtual = window.location.pathname;
     if (urlAtual.includes('capitulo')) {
         localStorage.setItem('alvoran_ultimoCapitulo', urlAtual);
-
+        
         // Marca como lido no sumário
         const match = urlAtual.match(/capitulo-(\d+)\.html/);
         if (match) {
@@ -326,11 +297,11 @@ function mostrarContinuar() {
     const ultimo = localStorage.getItem('alvoran_ultimoCapitulo');
     const continuarDiv = document.getElementById('continuarDiv');
     const continuarLink = document.getElementById('continuarLink');
-
+    
     if (ultimo && continuarDiv && continuarLink && !window.location.pathname.includes('capitulo')) {
         continuarDiv.style.display = 'block';
         continuarLink.href = ultimo;
-
+        
         // Adiciona informação de qual capítulo
         const match = ultimo.match(/capitulo-(\d+)\.html/);
         if (match) {
@@ -347,7 +318,7 @@ function aplicarEfeitoVirarPagina() {
             if (link.href && !link.href.includes('#') && link.getAttribute('target') !== '_blank') {
                 e.preventDefault();
                 const destino = link.href;
-
+                
                 document.body.style.animation = 'virarPaginaSaindo 0.3s ease forwards';
                 setTimeout(() => {
                     window.location.href = destino;
@@ -430,7 +401,7 @@ function atualizarTituloPagina() {
 // ---------- INICIALIZAÇÃO ----------
 document.addEventListener('DOMContentLoaded', () => {
     console.log('✨ Alvoran carregado com todas as funcionalidades!');
-
+    
     criarBotaoModo();
     criarBarraProgresso();
     criarBotaoSumario();
@@ -441,7 +412,7 @@ document.addEventListener('DOMContentLoaded', () => {
     atualizarTituloPagina();
     atualizarNavegacao();
     aplicarEfeitoVirarPagina();
-
+    
     // Barra de progresso
     window.addEventListener('scroll', atualizarBarraProgresso);
     atualizarBarraProgresso();
