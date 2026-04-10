@@ -1,0 +1,505 @@
+/* Reset básico */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #0d0d0d;
+    /* fundo escuro - cinzas de Dourávia */
+    color: #e0dcd3;
+    /* texto pálido, como papel antigo */
+    font-family: Georgia, 'Times New Roman', serif;
+    /* fonte clássica, elegante, com serifa */
+    line-height: 1.7;
+    /* espaçamento confortável para leitura */
+}
+
+/* Estilos específicos da capa */
+.capa {
+    text-align: center;
+    /* centraliza o conteúdo da capa */
+    min-height: 80vh;
+    /* altura mínima para a capa */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.titulo-livro {
+    font-size: 4em;
+    /* tamanho grande para o título */
+    letter-spacing: 4px;
+    /* espaçamento entre as letras */
+    margin-bottom: 0.5rem;
+    /* espaço abaixo do título */
+    font-weight: normal;
+    /* peso normal para o título */
+    border-left: none;
+    /* remove a borda esquerda */
+}
+
+.subtitulo-livro {
+    font-size: 1.2em;
+    /* tamanho menor para o subtítulo */
+    letter-spacing: 2px;
+    /* menos espaçamento entre as letras */
+    color: #9b2c2c;
+    /* cor mais suave para o subtítulo */
+    margin-bottom: 2rem;
+    /* remove a margem superior */
+}
+
+.linha-divisoria {
+    width: 80px;
+    height: 2px;
+    background: #c4a747;
+    /* cor dourada para a linha divisória */
+    margin: 2rem auto;
+    /* centraliza a linha */
+}
+
+.sinopse {
+    max-width: 500px;
+    /* largura máxima para a sinopse */
+    margin: 2rem auto;
+    /* centraliza a sinopse */
+    font-style: italic;
+    color: #aaa;
+}
+
+.botao-iniciar {
+    display: inline-block;
+    background: #c4a747;
+    color: #0d0d0d;
+    padding: 1rem 2.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 2rem;
+    transition: 0.3s;
+}
+
+.botao-iniciar:hover {
+    background: #9b2c2c;
+    color: #e0dcd3;
+}
+
+.continuar {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.continuar a {
+    color: #c4a747;
+}
+
+/* Estilo para o container principal */
+.container-livro {
+    max-width: 750px;
+    /* largura máxima para leitura confortável */
+    margin: 0 auto;
+    /* centraliza o container */
+    padding: 3rem 2rem;
+    /* espaçamento interno generoso */
+    background: #121212;
+    /* fundo um pouco mais claro para destacar o conteúdo */
+    border-radius: 8px;
+    /* cantos arredondados para um visual mais suave */
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+    /* sombra sutil para dar profundidade */
+}
+
+/* Estilo para os títulos */
+h1 {
+    font-size: 2.8rem;
+    /* tamanho grande para o título principal */
+    letter-spacing: -0.5px;
+    /* espaçamento entre letras */
+    margin-bottom: 2rem;
+    /* espaço abaixo do título */
+    color: #c9b99d;
+    /* cor dourada suave para os títulos */
+    border-left: 4px solid #9b2c2c;
+    /* barra vertical à esquerda do título */
+    padding-left: 1.5rem;
+    /* espaço entre a barra e o texto do título */
+    font-weight: normal;
+    /* peso normal para um visual mais clássico */
+}
+
+h2 {
+    font-size: 1.8rem;
+    /* tamanho menor para subtítulos */
+    margin: 2rem 0 1rem;
+    /* espaçamento ao redor do subtítulo */
+    color: #c4a747;
+    /* cor dourada suave para os subtítulos */
+}
+
+/* Estilo para o parágrafo */
+/* primeiro parágrafo sem recuo */
+.texto-capitulo p {
+    margin-bottom: 1.5rem;
+    text-align: justify;
+    text-align: inter-word;
+    hyphens: auto;
+    /* ← quebra palavras silabicamente */
+    -webkit-hyphens: auto;
+    word-spacing: normal;
+    /* evita espaços exagerados */
+}
+
+/* Estilo especial para falas com travessão */
+.texto-capitulo .fala {
+    text-indent: 0;             /* falas não têm recuo */
+    margin-left: 1rem;          /* leve afastamento da margem */
+    margin-bottom: 1rem;
+    line-height: 1.7;
+}
+
+/* Estilo para o travessão dentro da fala (opcional, só pra garantir espaçamento) */
+.texto-capitulo .fala::first-line {
+    letter-spacing: normal;
+}
+
+.texto-capitulo .fala::before {
+    content: "— ";
+    /* adiciona o travessão antes da fala */
+    color: #c4a747;
+    /* cor dourada suave para o travessão */
+    font-weight: bold;
+}
+
+/* Todos os parágrafos EXCETO o primeiro têm recuo */
+.texto-capitulo p:not(:first-of-type) {
+    text-indent: 1.2rem;
+}
+
+/* Primeira letra do livro (estilo antigo) */
+.texto-capitulo p:first-of-type::first-letter {
+    font-size: 3.5rem;
+    /* letra grande para a primeira letra do capítulo */
+    float: left;
+    /* flutua à esquerda do parágrafo */
+    line-height: 0.8;
+    /* altura da linha para a letra grande */
+    margin-right: 0.5rem;
+    /* espaço entre a letra e o texto */
+    color: #c4a747;
+    /* cor dourada suave para destacar a letra */
+    font-weight: bold;
+    /* negrito para a letra inicial */
+}
+
+/* Remove o efeito de primeira letra dos parágrafos de fala */
+.texto-capitulo .fala::first-letter {
+    font-size: inherit;
+    float: none;
+    line-height: inherit;
+    margin-right: 0;
+    color: inherit;
+    font-weight: inherit;
+}
+
+/* ========== SEPARADOR CÊNICO (***) ========== */
+.separador {
+    text-align: center !important;  /* força o centralizamento */
+    margin: 2rem auto !important;   /* centraliza horizontalmente */
+    display: block !important;      /* garante que é um bloco */
+    width: 100% !important;         /* ocupa toda largura */
+    font-size: 1.2rem;
+    letter-spacing: 4px;
+    color: #c4a747;
+    font-weight: normal;
+    clear: both;                    /* limpa qualquer float pendurado */
+}
+
+/* Efeito sutil no hover */
+.separador:hover {
+    letter-spacing: 8px;
+    transition: letter-spacing 0.3s ease;
+}
+
+/* Modo claro */
+body.modo-claro .separador {
+    color: #9b2c2c;
+}
+
+/* Navegação entre capítulos */
+.navegacao {
+    display: flex;
+    /* usa flexbox para layout horizontal */
+    justify-content: space-between;
+    /* espaça os links para as extremidades */
+    margin-top: 4rem;
+    /* espaço acima da navegação */
+    padding-top: 2rem;
+    /* espaço interno acima da navegação */
+    border-top: 1px solid #2a2a2a;
+    /* linha divisória acima da navegação */
+}
+
+.btn-capitulo {
+    background: #1a1a1a;
+    /* fundo escuro para os botões */
+    color: #c4a747;
+    /* cor dourada suave para o texto dos botões */
+    padding: 0.7rem 1.5rem;
+    /* espaçamento interno dos botões */
+    text-decoration: none;
+    /* remove sublinhado dos links */
+    border: 1px solid #2a2a2a;
+    /* borda sutil para os botões */
+    border-radius: 4px;
+    /* cantos arredondados para os botões */
+    transition: all 0.3s ease;
+    /* transição suave para hover */
+    font-size: 0.9rem;
+    /* tamanho de fonte para os botões */
+}
+
+.btn-capitulo:hover {
+    background: #2a2a2a;
+    /* fundo um pouco mais claro no hover */
+    color: #e0dcd3;
+    /* cor do texto muda para o tom pálido no hover */
+    border-color: #c4a747;
+    /* borda dourada no hover */
+}
+
+/* Estilo para o rodapé */
+footer {
+    background: #1a1a1a;
+    /* fundo escuro para o rodapé */
+    color: #c4a747;
+    /* cor dourada suave para o texto do rodapé */
+    text-align: center;
+    /* centraliza o texto do rodapé */
+    padding: 2rem;
+    /* espaçamento interno do rodapé */
+    margin-top: 4rem;
+    /* espaço acima do rodapé */
+}
+
+/* Modo noturno/claro */
+body.modo-claro {
+    background: #f5f5f5;
+    /* fundo claro para o modo claro */
+}
+
+body.modo-claro .container-livro {
+    background: #ffffff;
+    /* fundo branco para o container no modo claro */
+    color: #2c2c2c;
+    /* texto escuro para o modo claro */
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+    /* sombra mais suave para o modo claro */
+}
+
+body.modo-claro h1 {
+    color: #9b2c2c;
+    /* cor vermelha suave para os títulos no modo claro */
+    border-left-color: #9b2c2c;
+    /* cor da barra vertical no modo claro */
+}
+
+body.modo-claro h2 {
+    color: #9b2c2c;
+    /* cor vermelha suave para os subtítulos no modo claro */
+}
+
+body.modo-claro .texto-capitulo p:first-of-type::first-letter {
+    color: #9b2c2c;
+    /* cor vermelha suave para a letra inicial no modo claro */
+}
+
+body.modo-claro .btn-capitulo {
+    background: #e0dcd3;
+    /* fundo claro para os botões no modo claro */
+    color: #2c2c2c;
+    /* texto escuro para melhor contraste no modo claro */
+    border-color: #9b2c2c;
+    /* borda vermelha para os botões no modo claro */
+}
+
+body.modo-claro .btn-capitulo:hover {
+    background: #9b2c2c;
+    /* fundo vermelho no hover para os botões no modo claro */
+    color: #ffffff;
+    /* texto branco no hover para os botões no modo claro */
+    border-color: #9b2c2c;
+}
+
+
+body.modo-claro footer {
+    background: #e0dcd3;
+    /* fundo claro para o rodapé no modo claro */
+    color: #2c2c2c;
+    /* texto escuro para o rodapé no modo claro */
+}
+
+body.modo-claro .fala::before {
+    content: "— ";
+    /* adiciona o travessão antes da fala */
+    color: #9b2c2c;
+    /* cor vermelha suave para o travessão */
+    font-weight: bold;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    .titulo-livro {
+        font-size: 2.5em;
+        /* reduz o tamanho do título em telas menores */
+    }
+
+    .subtitulo-livro {
+        font-size: 1em;
+        /* reduz o tamanho do subtítulo em telas menores */
+    }
+
+    .container-livro {
+        padding: 2rem 1rem;
+        /* reduz o espaçamento interno em telas menores */
+    }
+
+    h1 {
+        font-size: 2rem;
+        /* reduz o tamanho dos títulos em telas menores */
+    }
+
+    h2 {
+        font-size: 1.5rem;
+        /* reduz o tamanho dos subtítulos em telas menores */
+    }
+
+    .btn-capitulo {
+        padding: 0.5rem 1rem;
+        /* reduz o espaçamento interno dos botões em telas menores */
+        font-size: 0.8rem;
+        /* reduz o tamanho da fonte dos botões em telas menores */
+    }
+}
+
+/* ========== BOTÕES FLUTUANTES (JS) ========== */
+.btn-modo, .btn-sumario {
+    position: fixed;
+    background: #1a1a1a;
+    color: #c4a747;
+    border: 1px solid #c4a747;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: monospace;
+    font-size: 0.8rem;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.btn-modo {
+    bottom: 20px;
+    right: 20px;
+}
+
+.btn-sumario {
+    bottom: 20px;
+    left: 20px;
+}
+
+.btn-modo:hover, .btn-sumario:hover {
+    background: #2a2a2a;
+    color: #e0dcd3;
+    border-color: #c4a747;
+}
+
+/* Modo claro para os botões flutuantes */
+body.modo-claro .btn-modo,
+body.modo-claro .btn-sumario {
+    background: #e0dcd3;
+    color: #2c2c2c;
+    border-color: #9b2c2c;
+}
+
+body.modo-claro .btn-modo:hover,
+body.modo-claro .btn-sumario:hover {
+    background: #9b2c2c;
+    color: #ffffff;
+    border-color: #9b2c2c;
+}
+
+/* Botão SUMÁRIO na navegação (já tem .btn-capitulo, mas vamos garantir) */
+body.modo-claro .btn-capitulo {
+    background: #e0dcd3;
+    color: #2c2c2c;
+    border-color: #9b2c2c;
+}
+
+body.modo-claro .btn-capitulo:hover {
+    background: #9b2c2c;
+    color: #ffffff;
+    border-color: #9b2c2c;
+}
+
+/* ========== MENSAGEM DE AVISO (próximo capítulo indisponível) ========== */
+.aviso-capitulo {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    background: #1a1a1a;
+    border-left: 4px solid #c4a747;
+    padding: 1rem 1.5rem;
+    border-radius: 4px;
+    color: #e0dcd3;
+    max-width: 300px;
+    z-index: 1001;
+    animation: slideIn 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.aviso-capitulo button {
+    background: #c4a747;
+    color: #0d0d0d;
+    border: none;
+    padding: 0.3rem 0.8rem;
+    margin-top: 0.5rem;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+}
+
+.aviso-capitulo button:hover {
+    background: #9b2c2c;
+    color: #e0dcd3;
+}
+
+/* Modo claro para a mensagem de aviso */
+body.modo-claro .aviso-capitulo {
+    background: #ffffff;
+    border-left-color: #9b2c2c;
+    color: #2c2c2c;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+body.modo-claro .aviso-capitulo button {
+    background: #9b2c2c;
+    color: #ffffff;
+}
+
+body.modo-claro .aviso-capitulo button:hover {
+    background: #c4a747;
+    color: #0d0d0d;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
