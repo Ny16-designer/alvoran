@@ -29,6 +29,7 @@ body {
 }
 
 .titulo-livro {
+    text-align: center;
     font-size: 4em;
     /* tamanho grande para o título */
     letter-spacing: 4px;
@@ -42,6 +43,7 @@ body {
 }
 
 .subtitulo-livro {
+    text-align: center;
     font-size: 1.2em;
     /* tamanho menor para o subtítulo */
     letter-spacing: 2px;
