@@ -4,13 +4,13 @@
 // ============================================
 
 // ---------- CONFIGURAÇÕES ----------
-const TOTAL_CAPITULOS = 1; // Atualize quando escrever novos capítulos
+const TOTAL_CAPITULOS = 2; 
 const NOME_LIVRO = "Alvoran: As Cinzas de Dourávia";
 
 // ---------- SUMÁRIO (atualize conforme seus capítulos) ----------
 const SUMARIO = [
-    { numero: 1, titulo: "O Pacto da Aurora", arquivo: "capitulo-1.html" }
-    // Adicione mais capítulos aqui quando escrever
+    { numero: 1, titulo: "Herdeiros", arquivo: "capitulo-1.html" },
+    { numero: 2, titulo: "---", arquivo: "capitulo-2.html" }
 ];
 
 // ---------- MODO CLARO/ESCURO ----------
@@ -90,7 +90,7 @@ function atualizarBarraProgresso() {
 // ---------- NAVEGAÇÃO COMPLETA (Anterior, Próximo, Sumário) ----------
 async function verificarProximoCapitulo(capituloAtual) {
     const proximoNumero = capituloAtual + 1;
-    const proximoArquivo = `capitulo-${proximoNumero}.html`;
+    const proximoArquivo = `../capitulos/capitulo-${proximoNumero}.html`;
     
     try {
         const response = await fetch(proximoArquivo, { method: 'HEAD' });
@@ -219,7 +219,7 @@ function atualizarNavegacao() {
     
     // Botão VOLTAR PARA CAPA
     const btnCapa = document.createElement('a');
-    btnCapa.href = 'index.html';
+    btnCapa.href = '../index.html';
     btnCapa.className = 'btn-capitulo';
     btnCapa.innerHTML = '🏠 CAPA';
     navDiv.appendChild(btnCapa);
@@ -227,7 +227,7 @@ function atualizarNavegacao() {
     // Botão ANTERIOR
     if (capituloAtual > 1) {
         const btnAnterior = document.createElement('a');
-        btnAnterior.href = `capitulo-${capituloAtual - 1}.html`;
+        btnAnterior.href = `../capitulos/capitulo-${capituloAtual - 1}.html`;
         btnAnterior.className = 'btn-capitulo';
         btnAnterior.innerHTML = '← ANTERIOR';
         navDiv.appendChild(btnAnterior);
@@ -252,10 +252,10 @@ function atualizarNavegacao() {
     btnProximo.className = 'btn-capitulo';
     btnProximo.innerHTML = 'PRÓXIMO →';
     
-    fetch(`capitulo-${proximoNumero}.html`, { method: 'HEAD' })
+    fetch(`../capitulos/capitulo-${proximoNumero}.html`, { method: 'HEAD' })
         .then(response => {
             if (response.ok) {
-                btnProximo.href = `capitulo-${proximoNumero}.html`;
+                btnProximo.href = `../capitulos/capitulo-${proximoNumero}.html`;
             } else {
                 btnProximo.href = '#';
                 btnProximo.style.opacity = '0.5';
