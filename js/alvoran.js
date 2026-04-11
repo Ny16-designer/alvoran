@@ -9,7 +9,7 @@ const NOME_LIVRO = "Alvoran: As Cinzas de Dourávia";
 
 // ---------- SUMÁRIO (atualize conforme seus capítulos) ----------
 const SUMARIO = [
-    { numero: 1, titulo: "Capítulo 1", arquivo: "capitulo-1.html" }
+    { numero: 1, titulo: "O Pacto da Aurora", arquivo: "capitulo-1.html" }
     // Adicione mais capítulos aqui quando escrever
 ];
 
