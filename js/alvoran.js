@@ -10,7 +10,7 @@ const NOME_LIVRO = "Alvoran: As Cinzas de Dourávia";
 // ---------- SUMÁRIO (atualize conforme seus capítulos) ----------
 const SUMARIO = [
     { numero: 1, titulo: "Herdeiros", arquivo: "capitulo-1.html" },
-    { numero: 2, titulo: "---", arquivo: "capitulo-2.html" }
+    { numero: 2, titulo: "Olhos de Safira", arquivo: "capitulo-2.html" }
 ];
 
 // ---------- MODO CLARO/ESCURO ----------
