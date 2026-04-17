@@ -444,6 +444,120 @@ body.modo-claro .btn-capitulo:hover {
     border-color: #9b2c2c;
 }
 
+/* ========== CARTA (estilo epistolar) ========== */
+.carta {
+    background: #1a1a1a;
+    padding: 2rem;
+    margin: 2rem 0;
+    border-radius: 8px;
+    border-left: 4px solid #c4a747;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Cabeçalho da carta (remetente/local/data) */
+.carta-cabecalho {
+    text-align: right;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+    color: #c4a747;
+    font-size: 0.85rem;
+}
+
+/* Saudação inicial (ex: "Querido Ryan,") */
+.carta-saudacao {
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+/* Corpo da carta (texto normal) */
+.carta-corpo {
+    margin-bottom: 1.5rem;
+}
+
+/* Despedida (ex: "Com amor, / Melissa") */
+.carta-despedida {
+    text-align: right;
+    margin-top: 1.5rem;
+    font-style: italic;
+}
+
+/* Assinatura */
+.carta-assinatura {
+    text-align: right;
+    font-family: 'Brush Script MT', cursive;
+    font-size: 1.3rem;
+    margin-top: 0.5rem;
+    color: #c4a747;
+}
+
+/* Efeito de papel amassado/envelhecido no hover (opcional) */
+.carta:hover {
+    background: #1e1e1e;
+    transition: all 0.3s ease;
+}
+
+/* Modo claro */
+body.modo-claro .carta {
+    background: #f5f2e8;
+    border-left-color: #9b2c2c;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+body.modo-claro .carta-cabecalho {
+    color: #9b2c2c;
+}
+
+body.modo-claro .carta-assinatura {
+    color: #9b2c2c;
+}
+
+body.modo-claro .carta:hover {
+    background: #fffdf8;
+}
+
+.carta-rascunho {
+    background: #1a1a1a;
+    padding: 2rem;
+    margin: 2rem 0;
+    border-radius: 4px;
+    border-left: 4px solid #c4a747;
+    font-family: 'Courier New', Courier, monospace;
+    transform: rotate(-0.5deg);
+    box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.carta-urgente {
+    background: #1a1a1a;
+    padding: 2rem;
+    margin: 2rem 0;
+    border-left: 4px solid #9b2c2c;
+    font-family: 'Courier New', Courier, monospace;
+    border-right: 1px solid #2a2a2a;
+    border-bottom: 1px solid #2a2a2a;
+}
+
+/* Continuação da carta (sem o cabeçalho e saudação) */
+.carta-continuacao {
+    background: #1a1a1a;
+    padding: 0 2rem 2rem 2rem;
+    margin: 0 0 2rem 0;
+    border-left: 4px solid #c4a747;
+    border-radius: 0 0 8px 8px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Modo claro */
+body.modo-claro .carta-continuacao {
+    background: #f5f2e8;
+    border-left-color: #9b2c2c;
+}
+
 /* ========== MENSAGEM DE AVISO (próximo capítulo indisponível) ========== */
 .aviso-capitulo {
     position: fixed;
