@@ -4,14 +4,15 @@
 // ============================================
 
 // ---------- CONFIGURAÇÕES ----------
-const TOTAL_CAPITULOS = 3; 
+const TOTAL_CAPITULOS = 4; 
 const NOME_LIVRO = "Alvoran: As Cinzas de Dourávia";
 
 // ---------- SUMÁRIO (atualize conforme seus capítulos) ----------
 const SUMARIO = [
-    { numero: 1, titulo: "Herdeiros", arquivo: "capitulo-1.html" },
-    { numero: 2, titulo: "Olhos de Safira", arquivo: "capitulo-2.html" },
-    { numero: 3, titulo: "A Carta", arquivo: "capitulo-3.html"}
+    { numero: 1, titulo: "Herdeiros", arquivo: "capitulos/capitulo-1.html" },
+    { numero: 2, titulo: "Olhos de Safira", arquivo: "capitulos/capitulo-2.html" },
+    { numero: 3, titulo: "A Carta", arquivo: "capitulos/capitulo-3.html"},
+    { numero: 4, titulo: "O Segundo Príncipe", arquivo: "capitulos/capitulo-4.html"}
 ];
 
 // ---------- MODO CLARO/ESCURO ----------
@@ -175,13 +176,17 @@ function mostrarSumario() {
     // Conteúdo do sumário
     let conteudo = '<h2 style="color: #c4a747; margin-bottom: 1.5rem;">📖 Sumário de Alvoran</h2><ul style="list-style: none; padding: 0;">';
     
+    // Verifica se está dentro de um capítulo para ajustar o caminho
+    const estaDentroDoCapitulo = window.location.pathname.includes('/capitulos/');
+    const prefixo = estaDentroDoCapitulo ? '../' : '';
+    
     SUMARIO.forEach(cap => {
         const isLido = localStorage.getItem(`lido_cap_${cap.numero}`) === 'true';
         const iconeLido = isLido ? '✓ ' : '○ ';
         
         conteudo += `
             <li style="margin-bottom: 0.8rem;">
-                <a href="${cap.arquivo}" style="color: #e0dcd3; text-decoration: none; display: block; padding: 0.3rem 0; border-bottom: 1px solid #2a2a2a;">
+                <a href="${prefixo}${cap.arquivo}" style="color: #e0dcd3; text-decoration: none; display: block; padding: 0.3rem 0; border-bottom: 1px solid #2a2a2a;">
                     ${iconeLido} <strong>Capítulo ${cap.numero}:</strong> ${cap.titulo}
                 </a>
             </li>
