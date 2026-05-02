@@ -4,7 +4,7 @@
 // ============================================
 
 // ---------- CONFIGURAÇÕES ----------
-const TOTAL_CAPITULOS = 4; 
+const TOTAL_CAPITULOS = 5; 
 const NOME_LIVRO = "Alvoran: As Cinzas de Dourávia";
 
 // ---------- SUMÁRIO (atualize conforme seus capítulos) ----------
@@ -12,7 +12,8 @@ const SUMARIO = [
     { numero: 1, titulo: "Herdeiros", arquivo: "capitulos/capitulo-1.html" },
     { numero: 2, titulo: "Olhos de Safira", arquivo: "capitulos/capitulo-2.html" },
     { numero: 3, titulo: "A Carta", arquivo: "capitulos/capitulo-3.html"},
-    { numero: 4, titulo: "O Segundo Príncipe", arquivo: "capitulos/capitulo-4.html"}
+    { numero: 4, titulo: "O Segundo Príncipe", arquivo: "capitulos/capitulo-4.html"},
+    { numero: 5, titulo: "Veneno", arquivo: "capitulos/capitulo-5.html"}
 ];
 
 // ---------- MODO CLARO/ESCURO ----------
